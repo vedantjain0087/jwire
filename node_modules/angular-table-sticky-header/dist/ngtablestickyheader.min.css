@@ -1,0 +1,1 @@
+.table-sticky-header-wrapper{display:block;position:relative;overflow:auto;height:100%;width:100%}.table-sticky-header-wrapper table[table-sticky-header]>thead,.table-sticky-header-wrapper table[table-sticky-header]>tfoot{transform:translateY(0)}

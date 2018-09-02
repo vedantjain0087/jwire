@@ -1,0 +1,363 @@
+<div id="wrapper"><div ng-include="'pages/navbar.html'"></div>
+
+<div class="main">
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container-fluid">
+			<div class="row">
+					<ul class="nav nav-tabs">
+							<li class="active"><a data-toggle="tab" href="/#upload">File Upload</a></li>
+							<li><a data-toggle="tab" href="/#master">Master</a></li>
+							<li><a data-toggle="tab" href="/#label">Label</a></li>
+							<li><a data-toggle="tab" href="/#checklist">Checklist</a></li>
+						  </ul>
+			</div>
+			<div class="tab-content">
+					<div id="upload" class="tab-pane fade in active">
+							<div class="row">
+									<div class="col-md-12">
+										<!-- PANEL HEADLINE -->
+										<div class="panel panel-headline">
+											<div class="panel-heading">
+												<h3 class="panel-title">Upload</h3>
+												<p class="panel-subtitle add_inline"><input type="file" class="filestyle " filepreview="filepreview" file-model="myFile1" filestyle="{buttonText: 'Select image',iconName: 'fa fa-file-image-o'}" id="fileInput1" onchange="angular.element(this).scope().upload(this.files)" ><div type="button" class="btn btn-success" ng-click="insertdata()">Add</div></p>
+											</div>
+										</div>
+										<!-- END PANEL HEADLINE -->
+									</div>
+								
+								</div>
+					</div>
+					<div id="master" class="tab-pane fade">
+						<div class="row" ng-hide="show_table == true">
+								<div class="panel panel-headline">
+										<div class="panel-body">
+											No Content to display in master, please upload a file
+											</div>
+											</div>
+						</div>
+							<div class="row abs" ng-if="show_table == true">
+							
+						
+									<!-- PANEL HEADLINE -->
+									<div class="panel panel-headline no-padding">
+											<div class="panel-body no-padding">
+												<table class="table table-striped no-padding">
+														<thead>
+																<tr>
+																			<th>#</th>
+																			<th>order_number</th>
+																			<th>order_item_number</th>
+																			<th>date_of_purchase</th>
+																			<th>payment_date</th>
+																			<th>buyer_email</th>
+																			<th>buyer_name</th>
+																			<th>buyers_phone_number</th>
+																			<th>sku</th>
+																			<th>product_name</th>
+																			<th>purchased_quantity</th>
+																			<th>currency</th>
+																			<th>commodity_price</th>
+																			<th>commodity_tax</th>
+																			<th>delivery_price</th>
+																			<th>distribution_tax</th>
+																			<th>delivery_service_level</th>
+																			<th>recipients_name</th>
+																			<th>delivery_address_1</th>
+																			<th>delivery_address_2</th>
+																			<th>delivery_address_3</th>
+																			<th>distribution_area</th>
+																			<th>distribution_City</th>
+																			<th>delivery_province</th>
+																			<th>distribution_zip_code</th>
+																			<th>delivery_country</th>
+																			<th>delivery_phone_number</th>
+																			<th>delivery_start_date</th>
+																			<th>delivery_end_date</th>
+																			<th>delivery_time_zone</th>
+																			<th>delivery_instructions</th>
+																			<th>invoice_requirements	</th>
+																			<th>buyer_selected_categories</th>
+																			<th>invoice</th>
+																			<th>invoice_information</th>
+																		</tr>
+																	</thead>
+													<tbody>
+														<tr ng-repeat="t in mytable track by $index">
+															<td>{{$index}}</td>
+															<td ng-repeat="x in t track by $index">{{x}}</td>
+															</tr>															
+													</tbody>
+												</table>
+											</div>
+									</div>
+									<!-- END PANEL HEADLINE -->
+								
+							
+							</div>
+					</div>
+					<div id="label" class="tab-pane fade">
+							<div class="row" ng-hide="show_label == true">
+									<div class="panel panel-headline">
+											<div class="panel-body">
+												No Content to display in label, please upload a file
+												</div>
+												</div>
+							</div>
+							<div class="row abs" ng-if="show_label == true">
+
+							<!-- PANEL HEADLINE -->
+							<div class="panel panel-headline no-padding">
+								<div class="panel-body no-padding">
+									<table class="table no-padding">
+											<thead>
+													<tr>
+																<th>CN</th>
+																<th>Carrier</th>
+																<th>label_packing_list</th>
+																<th>pick_up</th>
+																<th>invoice</th>
+																<th>purchase_status</th>
+																<th>order_no</th>
+																<th>shipping_status</th>
+																<th>tracking_no</th>
+																<th>delivery_status</th>
+																<th>id</th>
+																<th>ASIN</th>
+																<th>SKU</th>
+																<th>QTY</th>
+																<th>Item_name</th>
+																<th>box</th>
+																<th>weigth</th>
+																<th>price</th>
+																<th>address</th>
+																<th>insurance_cost</th>
+																<th>total_weight</th>
+																<th>group_index</th>
+																<th>order_date</th>
+																<th>checklist</th>
+															</tr>
+														</thead>
+										<tbody ng-repeat="(key, value) in lables | groupBy: 'address'" ng-init="gp=$index+1">
+
+											<tr ng-repeat="(key, l) in value">
+														
+														<td>{{l.CN}}</td>
+														<td>{{l.Carrier}}</td>
+														<td>{{l.label_packing_list}}</td>
+														<td>{{l.pick_up}}</td>
+														<td>{{l.invoice}}</td>
+														<td>{{l.purchase_status}}</td>
+														<td>{{l.order_no}}</td>
+														<td>{{l.shipping_status}}</td>
+														<td>{{l.tracking_no}}</td>
+														<td>{{l.delivery_status}}</td>
+														<td>{{l.id}}</td>
+														<td>{{l.ASIN}}</td>
+														<td>{{l.SKU}}</td>
+														<td>{{l.QTY}}</td>
+														<td>{{l.Item_name}}</td>
+														<td>{{l.box}}</td>
+														<td>{{l.weigth}}</td>
+														<td>{{l.price}}</td>
+														<td>{{l.address}}</td>
+														<td>{{l.insurance_cost}}</td>
+														<td>{{l.total_weight}}</td>
+														<td><span ng-bind="gp"></span></td>
+														<td>{{l.order_date}}</td>
+														<td>{{l.checklist}}</td>
+
+											
+											</tr>
+											
+												
+										</tbody>
+									</table>
+								</div>
+						</div>
+						<!-- END PANEL HEADLINE -->
+						</div>
+				</div>
+				<div id="checklist" class="tab-pane fade">
+					<div class="row" ng-if="show_checklist==false">
+							<div class="panel panel-headline">
+									<div class="panel-heading">
+										<p>No Checklist to display, Kindly upload a file</p>
+										</div>
+										</div>
+
+					</div>
+					<div ng-if="show_checklist==true">
+					<dir-pagination-controls 
+							max-size="5"
+							direction-links="true"
+							boundary-links="true"
+							></dir-pagination-controls>
+						</div>
+					<div ng-if="show_checklist==true" class="row" dir-paginate="(key, value) in checklists | groupBy: 'address' | itemsPerPage:1">
+							
+						<div class="col-md-2 right">
+								<textarea class="form-control"  rows="4"></textarea>
+
+						</div>
+							<div class="col-md-10 left">
+								<!-- PANEL HEADLINE -->
+								<div class="panel panel-headline col-md-6">
+									<div class="panel-heading">
+										<p>
+											<table class="table table-bordered">
+												<thead>
+													<th>S.No</th>
+													<th>Order Date</th>
+													<th>Order ID</th>
+												</thead>
+												<tbody>
+													<tr ng-repeat="(key, c) in value">
+														<td>{{$index+1}}</td>
+														<td>{{c.order_date}}</td>
+														<td>{{c.id}}</td>
+													</tr>
+												</tbody>
+
+											</table>
+										</p>
+										</div>
+								</div>
+								<!-- END PANEL HEADLINE -->
+								
+							</div>
+							
+							<div class="col-md-10">
+									<div class="panel panel-headline col-md-12">
+										<span class="right inline col-md-3">
+											Tracking No : <input type="text" class="form-control">
+										</span>
+											<div class="panel-heading col-md-8">
+													<table class="table table-bordered">
+															<thead>
+																<th>Ship to (Consignee) :-</th>
+																<th colspan="2"></th>
+																<th>Destination</th>
+															</thead>
+															<tbody ng-repeat="(key, c) in value" ng-if="$index == 0">
+																<tr>
+																	<td rowspan="3"></td>
+																	<td>Contact Person</td>
+																	<td>{{c.recipient_name}}</td>
+																	<td rowspan="3">CN</td>
+																</tr>
+																<tr>
+																		
+																		<td>Postal Code</td>
+																		<td>{{c.ship_postal_code}}</td>
+																	</tr>
+																	<tr>
+																		
+																			<td>Address</td>
+																			<td>{{c.ship_address_1}}</td>
+																		</tr>
+															</tbody>
+			
+														</table>
+												</div>
+												</div>
+							</div>
+							<div class="col-md-2 right">
+									<textarea class="form-control"  rows="4"></textarea>
+	
+							</div>
+							<div class="col-md-12">
+									<div class="panel panel-headline col-md-12">
+										<span class="left inline col-md-3">
+											Products&nbsp;<input type="text" class="form-control">
+										</span>
+											<div class="panel-heading col-md-8">
+													<table class="table table-bordered">
+															<thead>
+																<th>S.No</th>
+																<th>Product Name</th>
+																<th>Chinese ASIN</th>
+																<th>Japanese ASIN</th>
+																<th>Value</th>
+																<th>QTY</th>
+																<th>(YEN)</th>
+															</thead>
+															<tbody>
+																<tr ng-repeat="(key, c) in value">
+																	<td>{{$index+1}}</td>
+																	<td>{{c.Item_name}}</td>
+																	<td>{{c.ASIN}}</td>
+																	<td>{{c.ASIN}}</td>
+																	<td>{{c.price}}</td>
+																	<td>{{c.QTY}}</td>
+																	<td>yen</td>
+																</tr>
+															
+															</tbody>
+			
+														</table>
+												</div>
+												</div>
+							</div>
+							
+							<div class="col-md-2 inline right">
+									Receipt &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control">
+	
+							</div>
+							<div class="col-md-10">.</div>
+							<div class="col-md-6 right">
+									<div class="panel panel-headline">
+												<div class="panel-heading">
+														<table class="table table-bordered">
+																<tbody>
+																	<tr>
+																	<td>Weight (Kg):</td>
+																	<td colspan="3"></td>
+																	</tr>
+																	<tr>
+																			<td>Dimensions (LWH)</td>
+																			<td></td>
+																			<td></td>
+																			<td></td>
+																			
+																			</tr>
+																			<tr>
+																					<td>Packing Method</td>
+																					<td>Box</td>
+																					<td>Envelope</td>
+																					<td>Others</td>
+																					</tr>
+																
+																</tbody>
+				
+															</table>
+
+															<table class="table table-bordered">
+																	<tbody>
+																		<tr>
+																		<td>Name</td>
+																		<td><input type="text" class="form-control"></td>
+																		<td>Date:</td>
+																		<td><input type="text" class="form-control"></td>
+																		</tr>
+																	
+																	</tbody>
+					
+																</table>
+													</div>
+													</div>
+							</div>
+					
+						</div>
+			</div>
+					</div>
+				  </div>
+              
+					
+        </div>
+    </div>
+</div>
+
+</div>
+
+            

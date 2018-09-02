@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>tableStickyHeader.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="scripts/prettify/springeo.js" defer async></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/springeo.css">
+    <link type="text/css" rel="stylesheet" href="styles/simple-jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><input id="search" type="search" placeholder="Search..."><h3>Global</h3><ul id="global"><li><a href="global.html#tableStickyHeader">tableStickyHeader</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">tableStickyHeader.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Angular TableStickyHeader
+ * Copyright 2017 Andreas Stocker
+ * MIT License
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+ * Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+ * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+
+(function ($) {
+    'use strict';
+
+    var
+        module = angular.module('ngTableStickyHeader');
+
+    /**
+     * Directive for sticky table headers and footers.
+     *
+     * @name tableStickyHeader
+     * @ngdoc directive
+     */
+    module.directive('tableStickyHeader',
+        function () {
+            return {
+                restrict: 'A',
+                link: function (scope, element) {
+                    var
+                        $tableElement = $(element).wrap('&lt;div class="table-sticky-header-wrapper">&lt;/div>'),
+                        $tableWrapperElement = $tableElement.parent(),
+                        $windowElement = $(window),
+                        $tableHeaderElement = $('> thead', $tableElement),
+                        $tableFooterElement = $('> tfoot', $tableElement);
+
+                    /**
+                     * Listen on scroll events on the table. On each scroll event we need to
+                     * reposition the header and footer rows according to the scroll positions.
+                     */
+                    $tableWrapperElement.on('scroll', function () {
+                        var
+                            scrollHeight = $tableWrapperElement[0].scrollHeight,
+                            visibleHeight = $tableWrapperElement[0].clientHeight,
+                            scrollTop = $tableWrapperElement[0].scrollTop,
+                            scrollBottom = scrollHeight - (visibleHeight + scrollTop);
+
+                        /*
+                         * We use CSS transform for repositioning the headers and footers. This keeps
+                         * the table layout intact.
+                         */
+                        $tableHeaderElement.css('transform', 'translateY(' + scrollTop + 'px)');
+                        $tableFooterElement.css('transform', 'translateY(-' + scrollBottom + 'px)');
+                    });
+
+                    /**
+                     * When the window gets resized, we trigger a scroll event on the table. This will
+                     * recalculate the header and footer positions.
+                     */
+                    $windowElement.on('resize', function () {
+                        $tableWrapperElement.scroll();
+                    });
+
+                    /**
+                     * On each scope digest, we trigger a scroll event on the table. This will
+                     * recalculate the header and footer positions.
+                     */
+                    scope.$watch(function () {
+                        $tableWrapperElement.scroll();
+
+                        /*
+                         * We also need to recalculate the header and footer positions after the current
+                         * digest. But this should not trigger a new one - so we set a regular timeout and trigger
+                         * the scroll event.
+                         */
+                        window.setTimeout(function () {
+                            $tableWrapperElement.scroll();
+                        });
+                    });
+                }
+            };
+        }
+    );
+})(jQuery);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<!-- <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> using the Minami theme.
+</footer> -->
+
+<script>prettyPrint();</script>
+<!-- <script src="scripts/linenumber.js"></script> -->
+</body>
+</html>

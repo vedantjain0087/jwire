@@ -1,0 +1,14 @@
+.table-sticky-header-wrapper {
+  display: block;
+  position: relative;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+
+  table[table-sticky-header] {
+    & > thead,
+    & > tfoot {
+      transform: translateY(0);
+    }
+  }
+}

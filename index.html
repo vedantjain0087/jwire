@@ -12,20 +12,68 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
         <!-- ICONS -->
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favi.jpg">
+        <script src="assets/vendor/jquery/jquery.min.js"></script>
         <script src="https://code.angularjs.org/1.3.0-rc.1/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.3.0-rc.1/angular-route.min.js"></script>
+        <script src="angular-filter/dist/angular-filter.min.js"></script>
+    <script src="assets/scripts/pagination.js"></script>
         <script src="assets/scripts/app.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       <style type="text/css">
+        #wrapper .main {
+            width:100%;
+            float: none;
+        }
+        .add_inline{
+            display: inline-flex;
+        }
+        .abs{
+            position: absolute;
+        }
+        .rel{
+            position:relative;
+        }
+        .scrollable{
+            overflow-y:scroll;
+             height:500px;
+             
+        }
+       and_name{
+            font-size: 30px;
+            
+            padding: 10px;
+        }
+        .resize{
+            width:60px;
+        }
+        .no-padding{
+            padding: 0px;
+
+        }
+        .right{
+            float:right;
+        }
+        .inline{
+            display: inline-flex;
+        }
+        .left{
+            float:left;
+        }
+       
+ 
+        </style>
     </head>
     <body>
         <div ng-view>
         
         </div>
     </body>
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
+ 
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
-	<script src="assets/scripts/klorofil-common.js"></script>
+    <script src="assets/scripts/klorofil-common.js"></script>
+    
 </html>
