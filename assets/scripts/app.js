@@ -62,7 +62,8 @@ myApp.controller('loginController', ['$scope', '$http', '$location','$window','$
 $scope.login = function(){
 
   $http({
-    url: 'http://localhost:3000/login',
+    // url: 'http://localhost:3000/login',
+    url: 'https://jwire.herokuapp.com/login',
     method: "POST",
     data: { 'username' : $scope.username, 'password':$scope.password}
     //data:{'data': data}
@@ -96,7 +97,7 @@ myApp.controller('uploadController', ['$scope', '$http', '$location','$window','
 file_name = files[0].name;
         }
   $scope.insertdata = function() {
-   var promise = fileUpload.uploadFileToUrl(myFile1[0], 'http://localhost:3000/upload2','dimensionfile');
+   var promise = fileUpload.uploadFileToUrl(myFile1[0], 'https://jwire.herokuapp.com/upload2','dimensionfile');
           promise.then(
                 function(response) {
                   console.log(response);
@@ -113,7 +114,7 @@ file_name = files[0].name;
                       // temp.push("C02-9044824-6580825(v3)");
 
                       $http({
-                        url: 'http://localhost:3000/get_lable',
+                        url: 'https://jwire.herokuapp.com/get_lable',
                         method: "POST",
                         data: { 'id' : temp}
                        
