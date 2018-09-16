@@ -62,7 +62,8 @@ myApp.controller('loginController', ['$scope', '$http', '$location','$window','$
 $scope.login = function(){
 
   $http({
-    // url: 'http://localhost:3000/login',
+    //https://jwire.herokuapp.com
+    // url: 'https://jwire.herokuapp.com:3000/login',
     url: 'https://jwire.herokuapp.com/login',
     method: "POST",
     data: { 'username' : $scope.username, 'password':$scope.password}
@@ -75,6 +76,7 @@ $scope.login = function(){
       button: "Ok",
     });
   }else  if(response.data == "1"){
+    $window.sessionStorage.setItem("user",$scope.username );
     $window.location.href = '#/upload';
   }
        
@@ -96,65 +98,83 @@ myApp.controller('uploadController', ['$scope', '$http', '$location','$window','
     myFile1.push(files[0]);
 file_name = files[0].name;
         }
+
+        $http({
+          url: 'https://jwire.herokuapp.com/get_master',
+          method: "POST",
+          data: { 'user':$window.sessionStorage.user}
+         
+      })
+      .then(function(response) {
+        console.log(response);
+        if(response.data != "no"){
+        $scope.show_table = true;
+        $scope.mytable = response.data;
+        $http({
+          url: 'https://jwire.herokuapp.com/fetch_label',
+          method: "POST",
+          data: { 'user':$window.sessionStorage.user}
+         
+      })
+      .then(function(response) {
+        console.log(response);
+      $scope.show_label = true;
+      $scope.lables = response.data;
+      $scope.show_checklist = true;
+      $scope.checklists = response.data;
+
+      }); 
+    }
+      }); 
   $scope.insertdata = function() {
-   var promise = fileUpload.uploadFileToUrl(myFile1[0], 'https://jwire.herokuapp.com/upload2','dimensionfile');
+   var promise = fileUpload.uploadFileToUrl(myFile1[0], 'https://jwire.herokuapp.com/upload3','dimensionfile');
           promise.then(
                 function(response) {
                   console.log(response);
-                  let table = [];
-                    for(i=1;i<response.data.master.length;i++){
-                      console.log(response.data.master[i]._1.split("	"));
-                      table.push(response.data.master[i]._1.split("	"));
 
-                    }
-                    if(response.data != 0){
-                      temp = response.data.id;
-                      // temp.push("C02-9044824-6580825(v1)");
-                      // temp.push("C02-9044824-6580825(v2)");
-                      // temp.push("C02-9044824-6580825(v3)");
+                  $http({
+                    url: 'https://jwire.herokuapp.com/insert_master',
+                    method: "POST",
+                    data: { 'filename' : response.data,'user':$window.sessionStorage.user}
+                   
+                })
+                .then(function(response) {
+                  console.log(response);
 
-                      $http({
-                        url: 'https://jwire.herokuapp.com/get_lable',
-                        method: "POST",
-                        data: { 'id' : temp}
-                       
-                    })
-                    .then(function(response) {
-                           mylabel = []
-                           if(response.data.length > 1){
-                           for (x of response.data){
-                            mylabel.push(x[0]);
-                           }
-                          }else{
-                            mylabel.push(response.data[0]);
-                          }
-                        
-                           console.log("response");
-                           console.log(response.data[0]);
-                     $scope.lables = mylabel;
-                     $scope.checklists = mylabel;
-                     $scope.show_checklist = true;
-                     console.log("Checklist")
-                     console.log(mylabel);
-                     $scope.show_label = true;
-                    });
+                  $http({
+                    url: 'https://jwire.herokuapp.com/get_master',
+                    method: "POST",
+                    data: { 'user':$window.sessionStorage.user}
+                   
+                })
+                .then(function(response) {
+                  console.log(response);
+                  $scope.show_table = true;
+                  $scope.mytable = response.data;
+                  $http({
+                    url: 'https://jwire.herokuapp.com/fetch_label',
+                    method: "POST",
+                    data: { 'user':$window.sessionStorage.user}
+                   
+                })
+                .then(function(response) {
+                  console.log(response);
+                $scope.show_label = true;
+                $scope.lables = response.data;
+                $scope.show_checklist = true;
+                $scope.checklists = response.data;
+                swal("File Processed Successfully", "Open Master and Label tabs", "success", {
+                  button: "Ok",
+                });
 
-                      $scope.show_table = true;
-                      $scope.mytable = table;
-                      swal("File Processed Successfully", "Open Master and Label tabs", "success", {
-                        button: "Ok",
-                      });
-                    }
+                }); 
+
+                }); 
+
+                });    
                 });
               } 
              
-           
-             
-            //   $scope.$on('$includeContentLoaded', function(event) {
-            //     $(function() {
-            //       $("table").stickyTableHeaders();
-            //     });
-            // });
               
              
 

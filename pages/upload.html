@@ -46,7 +46,7 @@
 														<thead>
 																<tr>
 																			<th>#</th>
-																			<th>order_number</th>
+																			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order_number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 																			<th>order_item_number</th>
 																			<th>date_of_purchase</th>
 																			<th>payment_date</th>
@@ -54,7 +54,7 @@
 																			<th>buyer_name</th>
 																			<th>buyers_phone_number</th>
 																			<th>sku</th>
-																			<th>product_name</th>
+																			<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;product_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 																			<th>purchased_quantity</th>
 																			<th>currency</th>
 																			<th>commodity_price</th>
@@ -83,9 +83,42 @@
 																		</tr>
 																	</thead>
 													<tbody>
-														<tr ng-repeat="t in mytable track by $index">
+														<tr ng-repeat="x in mytable track by $index">
 															<td>{{$index}}</td>
-															<td ng-repeat="x in t track by $index">{{x}}</td>
+															<td>{{x.order_number}}</td>
+															<td>{{x.order_item_number}}</td>
+															<td>{{x.date_of_purchase}}</td>
+															<td>{{x.payment_date}}</td>
+															<td>{{x.buyer_email}}</td>
+															<td>{{x.buyer_name}}</td>
+															<td>{{x.buyers_phone_number}}</td>
+															<td>{{x.sku}}</td>
+															<td>{{x.product_name}}</td>
+															<td>{{x.purchased_quantity}}</td>
+															<td>{{x.currency}}</td>
+															<td>{{x.commodity_price}}</td>
+															<td>{{x.commodity_tax}}</td>
+															<td>{{x.delivery_price}}</td>
+															<td>{{x.distribution_tax}}</td>
+															<td>{{x.delivery_service_level}}</td>
+															<td>{{x.recipients_name}}</td>
+															<td>{{x.delivery_address_1}}</td>
+															<td>{{x.delivery_address_2}}</td>
+															<td>{{x.delivery_address_3}}</td>
+															<td>{{x.distribution_area}}</td>
+															<td>{{x.distribution_City}}</td>
+															<td>{{x.delivery_province}}</td>
+															<td>{{x.distribution_zip_code}}</td>
+															<td>{{x.delivery_country}}</td>
+															<td>{{x.delivery_phone_number}}</td>
+															<td>{{x.delivery_start_date}}</td>
+															<td>{{x.delivery_end_date}}</td>
+															<td>{{x.delivery_time_zone}}</td>
+															<td>{{x.delivery_instructions}}</td>
+															<td>{{x.invoice_requirements}}</td>
+															<td>{{x.buyer_selected_categories}}</td>
+															<td>{{x.invoice}}</td>
+															<td>{{x.invoice_information}}</td>
 															</tr>															
 													</tbody>
 												</table>
@@ -122,15 +155,15 @@
 																<th>shipping_status</th>
 																<th>tracking_no</th>
 																<th>delivery_status</th>
-																<th>id</th>
+																<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 																<th>ASIN</th>
 																<th>SKU</th>
 																<th>QTY</th>
-																<th>Item_name</th>
+																<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Item_name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 																<th>box</th>
 																<th>weigth</th>
 																<th>price</th>
-																<th>address</th>
+																<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 																<th>insurance_cost</th>
 																<th>total_weight</th>
 																<th>group_index</th>
